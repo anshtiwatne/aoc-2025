@@ -1,0 +1,15 @@
+{
+  "name": "OCaml AoC",
+  "build": { "dockerfile": "Dockerfile" },
+  "customizations": {
+    "vscode": {
+      "extensions": ["ocamllabs.ocaml-platform"],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.minimap.enabled": false,
+        "workbench.activityBar.location": "hidden"
+      }
+    }
+  },
+  "remoteUser": "opam"
+}
