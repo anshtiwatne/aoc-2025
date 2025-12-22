@@ -1,4 +1,4 @@
-open Lib
+open Lib.Utils
 
 let part1 inp =
   let step (pos, count) turn =
@@ -24,7 +24,7 @@ let part2 inp =
 ;;
 
 let () =
-  let input = Utils.read_lines 1 in
+  let input = read_input '\n' 1 in
   Printf.printf "Part 1: %d\n" (part1 input);
   Printf.printf "Part 2: %d\n" (part2 input)
 ;;

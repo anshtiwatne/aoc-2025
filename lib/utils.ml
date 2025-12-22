@@ -1,4 +1,9 @@
 open Base
 open Stdio
 
-let read_lines day = In_channel.read_lines (Printf.sprintf "input/day%d.txt" day)
+let read_input sep day =
+  let content = In_channel.read_all (Printf.sprintf "input/day%d.txt" day) in
+  String.split content ~on:sep
+  |> List.map ~f:String.strip
+  |> List.filter ~f:(fun s -> not (String.is_empty s))
+;;
