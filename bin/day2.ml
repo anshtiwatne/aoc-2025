@@ -6,13 +6,14 @@ let is_invalid_p1 n =
   l mod 2 = 0 && String.sub s 0 (l / 2) = String.sub s (l / 2) (l / 2)
 ;;
 
-let is_invalid_p2 n =
-  let s = string_of_int n in
+let is_invalid_p2 id =
+  let s = string_of_int id in
   let l = String.length s in
-  List.init (l / 2) (fun i -> i + 1)
-  |> List.exists (fun len ->
-    l mod len = 0
-    && String.concat "" (List.init (l / len) (fun _ -> String.sub s 0 len)) = s)
+  List.init (l / 2) (fun i ->
+    let part_len = i + 1 in
+    l mod part_len = 0
+    && String.sub s 0 (l - part_len) = String.sub s part_len (l - part_len))
+  |> List.exists Fun.id
 ;;
 
 let solve invalid_f ranges =
