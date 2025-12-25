@@ -11,7 +11,7 @@ open Lib.Utils
   List.fold_left (fun acc s -> acc + max_joltage s) 0 inp
 ;; *)
 
-let solve n input =
+let solve n inp =
   let rec bat_seq k s =
     if k = 0
     then ""
@@ -21,7 +21,7 @@ let solve n input =
       let i = String.index s m + 1 in
       String.make 1 m ^ bat_seq (k - 1) (String.sub s i (String.length s - i)))
   in
-  List.fold_left (fun acc s -> acc + int_of_string (bat_seq n s)) 0 input
+  List.fold_left (fun acc s -> acc + int_of_string (bat_seq n s)) 0 inp
 ;;
 
 let () =
