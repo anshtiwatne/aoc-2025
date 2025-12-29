@@ -1,11 +1,16 @@
-open Base
-open Stdio
-
 let read_input sep day =
-  let content = In_channel.read_all (Printf.sprintf "input/day%d.txt" day) in
-  String.split content ~on:sep
-  |> List.map ~f:String.strip
+  let filename = Printf.sprintf "input/day%d.txt" day in
+  let ic = open_in filename in
+  let content = really_input_string ic (in_channel_length ic) in
+  close_in ic;
+  let rec drop_while pred = function
+    | [] -> []
+    | x :: xs when pred x -> drop_while pred xs
+    | lst -> lst
+  in
+  String.split_on_char sep content
+  |> List.map String.trim
   |> List.rev
-  |> List.drop_while ~f:String.is_empty
+  |> drop_while (fun s -> String.length s = 0)
   |> List.rev
 ;;
